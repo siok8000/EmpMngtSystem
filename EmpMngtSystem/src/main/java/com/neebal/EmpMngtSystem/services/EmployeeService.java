@@ -6,8 +6,10 @@ import com.neebal.EmpMngtSystem.dto.EmployeeDTO;
 
 public interface EmployeeService {
 	
-	public List<EmployeeDTO> getEmployees();
-	public EmployeeDTO getEmployee(Long id);
-	public EmployeeDTO createEmployeeDTO(EmployeeDTO employeeDTO);
+	List<EmployeeDTO> getEmployees();
+	EmployeeDTO getEmployee(Long id);
+	EmployeeDTO createEmployee(EmployeeDTO employeeDTO);
+	EmployeeDTO updateEmployee(EmployeeDTO employeeDTO);
+	boolean deleteEmployee(Long id);
 
 }

@@ -30,8 +30,15 @@ public class EmployeeController {
 	
 	@RequestMapping(value="/employee", method=RequestMethod.POST, consumes="application/json", produces="application/json")
 	public EmployeeDTO createEmployee(@RequestBody EmployeeDTO employeeDTO){
-		EmployeeDTO dto = employeeService.createEmployeeDTO(employeeDTO);
+		EmployeeDTO dto = employeeService.createEmployee(employeeDTO);
 		dto = employeeService.getEmployee(dto.getId());
+		return dto;
+	}
+	
+	@RequestMapping(value="/employee", method=RequestMethod.PUT , consumes="application/json", produces="application/json")
+	public EmployeeDTO updateEmployee(@RequestBody EmployeeDTO employeeDTO){
+		EmployeeDTO dto = employeeService.updateEmployee(employeeDTO);
+		//dto = employeeService.getEmployee(dto.getId());
 		return dto;
 	}
 

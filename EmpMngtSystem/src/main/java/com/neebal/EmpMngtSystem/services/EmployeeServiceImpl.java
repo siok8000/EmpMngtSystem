@@ -21,6 +21,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private EmployeeRepository employeeRepository;
 	
 	@Autowired
+	private AddressService addressService;
+	
+	@Autowired
 	private Converter converter;
 	
 	@Override
@@ -49,12 +52,33 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public EmployeeDTO createEmployeeDTO(EmployeeDTO employeeDTO) {
+	public EmployeeDTO createEmployee(EmployeeDTO employeeDTO) {
 		Employee employee = converter.convertTOEmployeeEntity(employeeDTO);
 		
 		Employee dbEmployee = employeeRepository.saveAndFlush(employee);
 	 	EmployeeDTO dto = converter.convertTOEmployeeDTO(dbEmployee);
 		return dto;
+	}
+
+	@Override
+	public EmployeeDTO updateEmployee(EmployeeDTO employeeDTO) {
+		Optional<Employee> optionalEmployee = employeeRepository.findById(employeeDTO.getId());
+		if (optionalEmployee != null && optionalEmployee.isPresent()) {
+			Employee employee =  optionalEmployee.get();
+			employee.setName(employeeDTO.getName());
+			if (employeeDTO.getAddresses() != null && !employeeDTO.getAddresses().isEmpty()) {
+				employee.setAddresses(addressService.updateAddresses(employeeDTO.getAddresses()));
+			}
+			employee = employeeRepository.saveAndFlush(employee);
+			return converter.convertTOEmployeeDTO(employee);
+		}else {
+			return null;
+		}
+	}
+
+	@Override
+	public boolean deleteEmployee(Long id) {
+		return false;
 	}
 
 }

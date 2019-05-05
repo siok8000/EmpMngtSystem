@@ -7,8 +7,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.neebal.EmpMngtSystem.dto.AddressDTO;
 import com.neebal.EmpMngtSystem.dto.DepartmentDTO;
 import com.neebal.EmpMngtSystem.dto.EmployeeDTO;
+import com.neebal.EmpMngtSystem.entities.Address;
 import com.neebal.EmpMngtSystem.entities.Department;
 import com.neebal.EmpMngtSystem.entities.Employee;
 
@@ -54,6 +56,18 @@ public class Converter {
 		}
 		
 		return departments;
+	}
+	
+	public List<Address> convertAddDTOListTOEntityList(List<AddressDTO> addressDTOs){
+		List<Address> addresses = new ArrayList<Address>();
+		for (AddressDTO addressDTO : addressDTOs) {
+			addresses.add(modelMapper.map(addressDTO, Address.class));
+		}
+		return addresses;
+	}
+	
+	public Address convertAddDTOTOEntity(AddressDTO addressDTO){
+		return modelMapper.map(addressDTO, Address.class);
 	}
 
 }
