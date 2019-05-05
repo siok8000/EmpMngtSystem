@@ -1,0 +1,33 @@
+package com.neebal.EmpMngtSystem.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.neebal.EmpMngtSystem.dto.DepartmentDTO;
+import com.neebal.EmpMngtSystem.services.DepartmentService;
+
+@RestController
+@RequestMapping("department")
+public class DepartmentController {
+	
+	@Autowired
+	private DepartmentService departmentService;
+	
+	@RequestMapping(value = "/departments", method=RequestMethod.GET, produces="application/json")
+	public List<DepartmentDTO> getDepartments(){
+		return departmentService.getDepartments();
+	}
+	
+	public DepartmentDTO createDepartment(DepartmentDTO departmentDTO){
+		return departmentService.createDepartment(departmentDTO);
+	}
+	
+	public DepartmentDTO getDepartment(Long id){
+		return departmentService.getDepartment(id);
+	}
+
+}

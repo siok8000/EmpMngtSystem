@@ -1,0 +1,5 @@
+package com.neebal.EmpMngtSystem.controller;
+
+public class DepartmentController {
+
+}

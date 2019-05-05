@@ -1,0 +1,73 @@
+package com.neebal.EmpMngtSystem.services;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.neebal.EmpMngtSystem.converter.Converter;
+import com.neebal.EmpMngtSystem.dto.EmployeeDTO;
+import com.neebal.EmpMngtSystem.entities.Address;
+import com.neebal.EmpMngtSystem.entities.Contact;
+import com.neebal.EmpMngtSystem.entities.Employee;
+import com.neebal.EmpMngtSystem.repository.EmployeeRepository;
+
+@Service
+@Transactional
+public class EmployeeServiceImpl implements EmployeeService {
+	
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	
+	@Autowired
+	private Converter converter;
+	
+	@Override
+	public List<EmployeeDTO> getEmployees() {
+		List<Employee> employees = employeeRepository.findAll();
+		
+		List<EmployeeDTO> employeeDTOs = new ArrayList<EmployeeDTO>();
+		
+		for (Employee employee : employees) {
+			EmployeeDTO employeeDTO = converter.convertTOEmployeeDTO(employee);
+			employeeDTOs.add(employeeDTO);
+		}
+		
+		return employeeDTOs;
+	}
+
+	@Override
+	public EmployeeDTO getEmployee(Long id) {
+		EmployeeDTO employeeDTO = null;
+		Employee employee =  employeeRepository.getOne(id);
+		if (employee != null) {
+			return employeeDTO = converter.convertTOEmployeeDTO(employee);
+		}else {
+			return employeeDTO;
+		}
+	}
+
+	@Override
+	public EmployeeDTO createEmployeeDTO(EmployeeDTO employeeDTO) {
+		Employee employee = converter.convertTOEmployeeEntity(employeeDTO);
+		
+		Set<Contact> contacts = employee.getContacts();
+		Set<Contact> set = new HashSet<Contact>();
+
+		for (Contact contact : contacts) {
+			contact.setEmployee(employee);
+			set.add(contact);
+		}
+		
+		employee.setContacts(set);
+		
+		Employee dbEmployee = employeeRepository.save(employee);
+		EmployeeDTO dto = converter.convertTOEmployeeDTO(dbEmployee);
+		return dto;
+	}
+
+}

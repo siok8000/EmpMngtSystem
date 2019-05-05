@@ -1,0 +1,14 @@
+package com.neebal.EmpMngtSystem.services;
+
+import java.util.List;
+
+import com.neebal.EmpMngtSystem.dto.EmployeeDTO;
+import com.neebal.EmpMngtSystem.entities.Employee;
+
+public interface EmployeeService {
+	
+	public List<EmployeeDTO> getEmployees();
+	public EmployeeDTO getEmployee(Long id);
+	public Employee createEmployeeDTO(EmployeeDTO employeeDTO);
+
+}

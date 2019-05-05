@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="CleanDialogSettings">
+		<item value="565" key="DIALOG_WIDTH"/>
+		<item value="false" key="TOGGLE_SELECTED"/>
+		<item value="406" key="DIALOG_HEIGHT"/>
+		<item value="401" key="DIALOG_X_ORIGIN"/>
+		<item value="194" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
+		<item value="true" key="ShowStatusLine"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;History&gt;&#x0A;&lt;historyRootNode&gt;&#x0A;&lt;infoNode path=&quot;/EmpMngtSystem/src/main/java/com/neebal/EmpMngtSystem/entities/Employee.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/EmpMngtSystem/pom.xml&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/EmpMngtSystem/src/main/java/com/neebal/EmpMngtSystem/dto/EmployeeDTO.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/EmpMngtSystem/src/main/java/com/neebal/EmpMngtSystem/controller/EmployeeController.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/EmpMngtSystem/src/main/java/com/neebal/EmpMngtSystem/entities/Contact.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/EmpMngtSystem/src/main/resources/application.properties&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;/historyRootNode&gt;&#x0A;&lt;/History&gt;" key="History"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;" key="WorkingSet"/>
+		<item value="false" key="ShowDerived"/>
+		<section name="DialogBoundsSettings">
+			<item value="600" key="DIALOG_WIDTH"/>
+			<item value="1|Cantarell|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+			<item value="500" key="DIALOG_HEIGHT"/>
+			<item value="383" key="DIALOG_X_ORIGIN"/>
+			<item value="120" key="DIALOG_Y_ORIGIN"/>
+		</section>
+	</section>
+</section>

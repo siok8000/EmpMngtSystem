@@ -1,0 +1,32 @@
+package com.neebal.EmpMngtSystem.converter;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.neebal.EmpMngtSystem.dto.DepartmentDTO;
+import com.neebal.EmpMngtSystem.dto.EmployeeDTO;
+import com.neebal.EmpMngtSystem.entities.Department;
+import com.neebal.EmpMngtSystem.entities.Employee;
+
+@Component
+public class Converter {
+	
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	public EmployeeDTO convertTOEmployeeDTO(Employee employee){
+		EmployeeDTO employeeDTO = modelMapper.map(employee, EmployeeDTO.class);
+		return employeeDTO;
+	}
+	
+	public Employee convertTOEmployeeEntity(EmployeeDTO employeeDTO){
+		Employee employee = modelMapper.map(employeeDTO, Employee.class);
+		return employee;
+	}
+	
+	public DepartmentDTO convertTODepartmentDTO(Department department){
+		DepartmentDTO departmentDTO = modelMapper.map(department, DepartmentDTO.class);
+	}
+
+}

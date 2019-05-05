@@ -1,0 +1,50 @@
+package com.neebal.EmpMngtSystem.converter;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.neebal.EmpMngtSystem.dto.EmployeeDTO;
+import com.neebal.EmpMngtSystem.entities.Address;
+import com.neebal.EmpMngtSystem.entities.Contact;
+import com.neebal.EmpMngtSystem.entities.Employee;
+
+@Component
+public class Converter {
+	
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	public EmployeeDTO convertTOEmployeeDTO(Employee employee){
+		EmployeeDTO employeeDTO = modelMapper.map(employee, EmployeeDTO.class);
+		return employeeDTO;
+	}
+	
+	public Employee convertTOEmployeeEntity(EmployeeDTO employeeDTO){
+		Employee employee = modelMapper.map(employeeDTO, Employee.class);
+		List<Address> addresses = employee.getAddresses();
+		List<Address> addressesList = new ArrayList<Address>();
+		for (Address address : addresses) {
+			address.setEmployee(employee);
+			addressesList.add(address);
+		}
+		employee.setAddresses(addressesList);
+		
+		Set<Contact> contacts = employee.getContacts();
+		Set<Contact> set = new HashSet<Contact>();
+
+		for (Contact contact : contacts) {
+			contact.setEmployee(employee);
+			set.add(contact);
+		}
+		
+		employee.setContacts(set);
+		return employee;
+	}
+
+}

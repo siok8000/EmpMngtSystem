@@ -1,0 +1,5 @@
+package com.neebal.EmpMngtSystem.services;
+
+public class DepartmentService {
+
+}
