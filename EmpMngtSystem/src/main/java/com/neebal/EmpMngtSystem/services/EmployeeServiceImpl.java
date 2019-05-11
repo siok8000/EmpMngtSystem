@@ -14,7 +14,7 @@ import com.neebal.EmpMngtSystem.entities.Employee;
 import com.neebal.EmpMngtSystem.repository.EmployeeRepository;
 
 @Service
-@Transactional
+//@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Autowired
